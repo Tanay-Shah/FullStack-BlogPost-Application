@@ -41,7 +41,7 @@ const links = [
 const Navbar = () => {
   return (
 <div className={styles.container}> 
-     <Link href="/" className={styles.logo}>Navbar</Link>
+     <Link href="/" className={styles.logo}>Blogpost</Link>
      <div className={styles.links}>
      <Sitetheme/>
      {links.map((e)=>{
