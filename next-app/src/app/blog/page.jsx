@@ -9,27 +9,29 @@ async function getData() {
   });
 
   if (!res.ok) {
-    // throw new Error("Failed to fetch data");
-    
-    let res=[{
-      id:1,
-      img:'https://images.pexels.com/photos/19869259/pexels-photo-19869259/free-photo-of-brunette-looking-at-birds-on-sky.jpeg',
-      title:'TEXTBLOG',
-      desc:'scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
-    }]
-    return res
+    throw new Error("Failed to fetch data");
 
   }
-
+  
   return res.json();
 }
 
+
+///For Change Title In Browsers Tab
+export function metadata(){
+  return{
+    title:"Blog"
+  }
+}
+
 const Blog = async () => {
+       
   const data = await getData();
   return (
     <div className={styles.mainContainer}>
+        {/* Params Input as routing  */}
       {data.map((item) => (
-        <Link href={`/blog/${item._id}`} className={styles.container} key={item.id}>
+        <Link href={`/blog/${item.id}`} className={styles.container} key={item.id}>
           <div className={styles.imageContainer}>
             <Image
               src={item.img}
